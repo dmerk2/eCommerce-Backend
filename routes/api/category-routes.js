@@ -12,7 +12,7 @@ router.get("/", async (req, res) => {
     });
     res.json(allCategories);
   } catch (error) {
-    res.status(500).res.json(error);
+    res.status(500).json(error);
   }
 });
 
@@ -24,20 +24,42 @@ router.get("/:id", async (req, res) => {
       include: [{ model: Product }],
     });
     if (!singleCategory) {
-      res.status(400).json({ message: "No category found" });
+      res.status(404).json({ message: "No category found" });
     }
     res.json(singleCategory);
   } catch (error) {
-    res.status(500).res.json(error);
+    res.status(500).json(error);
   }
 });
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   // create a new category
+  try {
+    const createCategory = await Category.create(req.body);
+    if (!createCategory) {
+      res.status(404).json({ message: "No category found" });
+    }
+    res.json(createCategory);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
-router.put("/:id", (req, res) => {
+router.put("/:id", async (req, res) => {
   // update a category by its `id` value
+  try {
+    const updateCategory = await Category.update(req.body, {
+      where: {
+        id: req.params.id,
+      },
+    });
+    if (!updateCategory) {
+      res.status(404).json({ message: "No category found" });
+    }
+    res.json(updateCategory);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 });
 
 router.delete("/:id", async (req, res) => {
@@ -50,7 +72,7 @@ router.delete("/:id", async (req, res) => {
     });
     res.json(deleteCategory);
   } catch (error) {
-    res.status(400).res.json(error);
+    res.status(500).json(error);
   }
 });
 

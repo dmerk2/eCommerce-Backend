@@ -13,7 +13,7 @@ router.get("/", async (req, res) => {
     });
     res.json(allProducts);
   } catch (error) {
-    res.status(400).res.json(error);
+    res.status(500).json(error);
   }
 });
 
@@ -26,12 +26,12 @@ router.get("/:id", async (req, res) => {
       include: [{ model: Category }, { model: Tag, through: ProductTag }],
     });
     if (!singleProduct) {
-      res.status(400).json({ message: "No product found" });
+      res.status(404).json({ message: "No product found" });
       return;
     }
     res.json(singleProduct);
   } catch (error) {
-    res.status(400).res.json(error);
+    res.status(500).json(error);
   }
 });
 
@@ -63,7 +63,7 @@ router.post("/", (req, res) => {
     .then((productTagIds) => res.status(200).json(productTagIds))
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
@@ -107,7 +107,7 @@ router.put("/:id", (req, res) => {
     })
     .catch((err) => {
       console.log(err);
-      res.status(400).json(err);
+      res.status(500).json(err);
     });
 });
 
@@ -121,7 +121,7 @@ router.delete("/:id", async (req, res) => {
     });
     res.json(deleteProduct);
   } catch (error) {
-    res.status(400).res.json(error);
+    res.status(500).json(error);
   }
 });
 
