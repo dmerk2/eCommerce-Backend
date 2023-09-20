@@ -9,7 +9,6 @@
 - [Description](#description)
 - [Installation](#installation)
 - [Walkthrough Video](#walkthrough-video)
-- [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
@@ -40,30 +39,29 @@ git clone https://github.com/dmerk2/eCommerce-Backend.git
 
 ```
 DB_NAME="ecommerce_db"
-DB_USER="your_mysql_username"
-DB_PASSWORD="your_mysql_password"
+DB_USER="<your_mysql_username>"
+DB_PASSWORD="<your_mysql_password>"
 ```
 
-### Enter password for mysql db folder
-
+### Direct to db folder to log into mysql shell and enter password
 
 ```sh
 mysql -u root -p
 ```
 
-### Add the schema.sql to create the database structure
+### Add the schema to create the database structure
 
 ```sh
 SOURCE schema.sql
 ```
 
-### Install dependencies
+### Install necessary dependencies
 
 ```sh
 npm i
 ```
 
-### Add the seeds to populate the database from root folder
+### Add the seeds to populate the database
 
 ```sh
 npm run seed
@@ -77,9 +75,7 @@ npm run watch
 
 ## Walkthrough Video
 
-Click the lightning bolt [⚡]() to view the eCommerce Backend in action!
-
-## Usage
+Click the lightning bolt [⚡](https://watch.screencastify.com/v/42obYol7VilNzV2VfAT9) to view the eCommerce Backend application in action!
 
 ## License
 
