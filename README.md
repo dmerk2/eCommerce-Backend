@@ -67,8 +67,7 @@ npm i
 npm run seed
 ```
 
-### Start the server with nodemon
-
+### Start the server
 ```sh
 npm run watch
 ```
